@@ -1,13 +1,11 @@
 class Deck {
 
-    val cards: Array<Card> = Array(52, fun (i: Int): Card {
-        val value = i % 13
-        val suit = when(i / 13) { // == switch
+    val cards = Array(52, { Card(it % 3, getSuit(it)) })
+
+    private fun getSuit(i: Int) = when(i / 13) { // == switch
             0 -> "Clubs"
             1 -> "Diamonds"
             2 -> "Hearts"
             else -> "Spades"
-        }
-        return Card(value, suit)
-    })
+    }
 }
